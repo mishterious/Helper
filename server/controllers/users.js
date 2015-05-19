@@ -10,11 +10,11 @@ module.exports = (function(){
 					console.log(req.body);
 					var user = new User({email:req.body.email, position:req.body.position, reason:req.body.reason});
 					user.save(function(err, data){
-						console.log("weewe");
+						
 						if (err){
 							console.log("Did not save");
 						} else {
-							console.log("Saved");
+							console.log(data);
 							res.json(data);
 						}
 					})

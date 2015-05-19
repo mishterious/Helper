@@ -26,20 +26,29 @@ body {
     line-height: 1.7em;
     color: #7f8c8d;
     font-size: 13px;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
 }
 
 #logo{
-    font-family: raleway;
-    font-weight: bold;
+    font-family: helvetica;
+    height:100%;
+    font-size: 24px;
+    padding-top:15px;
     /*background: -webkit-linear-gradient(white, #333);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;*/
 }
 
 #navmenu{
-    margin-left:-120%;
+    margin-left:-60%;
     background-color: rgba(164,196,251,.9);
     border-radius: 4px;
+    width:200px;
 }
 
 h1,
@@ -134,6 +143,10 @@ a.pure-button-primary {
 
 #homebutton{
     color:white;
+    font-size: 20px;
+    padding-top:15px;
+    font-style: helvetica;
+    vertical-align: top;
 }
 
 .pure-menu.pure-menu-fixed {
@@ -141,6 +154,7 @@ a.pure-button-primary {
     border-bottom: none;
     /* I need a higher z-index here because of the scroll-over effect. */
     z-index: 4;
+    height:50px;
 }
 
 .home-menu .pure-menu-heading {
@@ -153,9 +167,18 @@ a.pure-button-primary {
     color: black;
 }
 
+.pure-menu-has-children{
+    content:none;
+}
+
 .home-menu a {
+
+    color:white;
+    font-size: 20px;
+    padding-top:15px;
+   /* font-style: helvetica;
     font-family: raleway;
-    font-weight: bold;
+    font-weight: bold;*/
     color: white;
    /* background: -webkit-linear-gradient(white, #333);
       -webkit-background-clip: text;
@@ -166,7 +189,9 @@ a.pure-button-primary {
     background: none;
     border: none;
     color: #00C7F3;
+
 }
+
 
 
 /*
@@ -179,7 +204,7 @@ a.pure-button-primary {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     z-index: 1;
-    /*height:100vh;*/
+    font-size:20px;
     overflow: hidden;
     /* The following styles are required for the "scroll-over" effect */
     width: 100%;
@@ -202,13 +227,11 @@ a.pure-button-primary {
 
     /* This is the main heading that appears on the blue section */
     .splash-head {
-        font-size: 34px;
-        font-weight: bold;
+        
         color: #4E4E56;
         /*border: 3px solid white;*/
         padding:10px 0px 10px 0px;
-    /*    padding: 1em 1.6em;*/
-        font-weight: 100;
+        font-weight: 200;
         border-radius: 5px;
         line-height: 1em;
         margin-top:0px;
@@ -220,8 +243,43 @@ a.pure-button-primary {
             color: #4E4E56;
             letter-spacing: 0.05em;
             opacity: 0.9;
-            font-weight: bold;
+            font-size:36px;
         }
+
+#down_icon{
+    color:white;
+    height:50px;
+    font-size: 64px;
+    padding-top: 12%;
+    margin-left: -25px;
+    -webkit-animation: flickerAnimation 2.5s infinite;
+       -moz-animation: flickerAnimation 3s infinite;
+       -o-animation: flickerAnimation 3s infinite;
+        animation: flickerAnimation 3s infinite;
+}
+
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-o-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+
+
 
 #signup_button{
         
@@ -230,6 +288,14 @@ a.pure-button-primary {
         border-color:white;
         color:white;
 }
+
+    #signup_botton:hover{
+        background-image: linear-gradient(to bottom,#FF9A66 0,white 100%);
+        text-shadow:none;
+        border-color:white;
+        color:white;
+
+    }
     .btn-default:focus, .btn-default:hover {
       background-color: #99B7EA;
       background-position: 0 -35px;
@@ -247,9 +313,20 @@ a.pure-button-primary {
 /*
  * -- CONTENT STYLES --
  * This represents the content area (everything below the blue section)
- */#second_section {
+ */
+ #second_section {
     display: none;
  }
+
+ #third_section {
+     display: none;
+  }
+
+ #terms_switcher{
+    color:blue;
+    text-decoration: underline;
+ }
+
 .content-wrapper {
     /* These styles are required for the "scroll-over" effect */
     position: absolute;
@@ -268,12 +345,14 @@ a.pure-button-primary {
 
 /* This is the class used for the main content headers (<h2>) */
 .content-head {
-    font-weight: 400;
+    font-weight: 00;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     /*margin: 2em 0 1em;*/
     margin:0px;
+    /*margin-bottom: 80px;*/
     color:white;
+    font-size:36px;
 }
 
 
@@ -289,9 +368,28 @@ a.pure-button-primary {
 /* This is the class used for the content sub-headers (<h3>) */
 .content-subhead {
     color: white;
+    text-align: center;
+    width:100%;
 }
+    .multi-vision{
+        color:#FD4C44;
+    }
     .content-subhead i {
         margin-right: 7px;
+    }
+
+    .process_flow{
+        text-align: center;
+        width:100%;
+        font-size: 16px;
+        font-family: helvetica;
+        color:white;
+
+
+    }
+
+    .banner_4{
+        font-size:22px;
     }
 
 /* This is the class used for the dark-background areas. */
@@ -327,7 +425,14 @@ a.pure-button-primary {
      width:100%;
      margin: 0px;
      padding-top: 10%;
+     padding-bottom:30%;
  }
+
+    .title_2{
+        font-size:48px;
+    }
+
+
  #content_2{
     background-image: url("../../img/pen-black-book.jpg");
     background-size: cover;
@@ -373,7 +478,7 @@ a.pure-button-primary {
 
 
  .modal-content {
-   background: rgba(255, 255, 255, 0.95);
+   background: rgba(255, 255, 255, 1);
    border-radius: 3px;
   }
   
@@ -381,7 +486,6 @@ a.pure-button-primary {
        .modal-header
        {
          border-top:none;
-         background:rgba(255, 255, 255, 0.2);
          text-align:center;
        }
        
@@ -433,7 +537,6 @@ a.pure-button-primary {
       .modal-footer
        {
          border-top:none;
-         background:rgba(255, 255, 255, 0.2)
        }
        
 
@@ -447,45 +550,35 @@ a.pure-button-primary {
          position:relative;
          height:200px;
          border-radius: 3px;
-
+         transition: transform 0.3s ease;
        }
      
             .boxes .boxes_hover_layer
              {
-               position:absolute;
-               border-top:1px solid white;
-               border-bottom:1px solid white;
-               background:rgba(0, 0, 0, 1);
-               top:0px;
+               /*position:absolute;*/
+               border-radius:5px;
+               background:#151515;
                height:200px;
-               width: 100%;
-               left:0;
-/*               opacity: 9;
-*/
-               -webkit-transition: height 0.5s; /* Safari */
-               -webkit-transition-timing-function: linear; /* Safari */
-               transition: height 0.5s;
-               transition-timing-function: linear;
-
-
-/*             -webkit-transition: top 0.8s;
-               transition: top 0.8s;
-               transition-timing-function: ease;*/
+               opacity: 0.9;
+               margin:0 2%;
              }
      
-            .boxes:hover .boxes_hover_layer,
-            .boxes .boxes_hover_layer:hover
+            .boxes:hover
              {
                 /*width: 300px;*/
-               height:0px;
+                 transform: scale(1.15);
+
               /* -webkit-transition: top 0.8s;
                transition: top 0.8s;
                transition-timing-function: ease;*/
              }
+     
                 
                 .boxes .boxes_hover_layer_inner
                  {
                     padding:1em;
+                    
+                    height:100%;
                  }
 
 
@@ -504,6 +597,7 @@ a.pure-button-primary {
 
     #logo{
         padding-right: 0px;
+        padding-top:10px;
     }
     /* We want to give the content area some more padding */
     .content {
@@ -519,6 +613,14 @@ a.pure-button-primary {
         .home-menu ul {
             float: right;
         }
+
+    #homebutton{
+        padding-top:10px;
+    }
+
+    .home-menu a {
+        padding-top:10px;
+    }
     
     #purpose {
         height: 35px;
@@ -536,6 +638,7 @@ a.pure-button-primary {
         height: 100%;
     }
 
+
         .splash {
             width: 100%;
         }
@@ -543,13 +646,37 @@ a.pure-button-primary {
             .splash-head {
                 font-size: 150%;
                 padding-top:0px;
+                font-weight:100;
             }
 
 
             .splash-subhead {
-                font-weight: normal;
+                font-weight: 500;
+                font-size:60%;
 
             }
+    #down_icon{
+        color:white;
+        height:50px;
+        font-size: 64px;
+        padding-top: 40%;
+        margin: 0px;
+        -webkit-animation: 3.4s ease-in-out infinite fadebottom;
+    }
+
+    .title_2{
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .process_flow{
+        width:100%;
+    }
+
+    .content-subhead{
+        vertical-align: center;
+         width:100%;
+    }
     
     .boxes{
         margin-bottom: 10%;
@@ -558,7 +685,18 @@ a.pure-button-primary {
          {
             top:0px;
             width:100%;
+             -webkit-transition: none; /* Safari */
+               -webkit-transition-timing-function: none; /* Safari */
+               transition: none;
+               transition-timing-function: none;
+            border-radius: 4px;
          }
+
+            .boxes:hover .boxes_hover_layer,
+            .boxes .boxes_hover_layer:hover
+             {
+               height:100%;
+             }
 /*    #content_1{
         padding-top:100%;
     }*/
@@ -590,6 +728,10 @@ a.pure-button-primary {
         position: fixed !important;
     }
 
+    #hide_footer{
+        display: none;
+    }
+
 }
 
 /*
@@ -597,7 +739,7 @@ a.pure-button-primary {
  * On desktops and other large devices, we want to over-ride some
  * of the mobile and tablet styles.
  */
-@media (min-width: 780px) {
+@media (max-width: 780px) {
     /* We increase the header font size even more */
     .splash-head {
         font-size: 300%;

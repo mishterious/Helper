@@ -6,6 +6,11 @@ helper.controller('SignupCtrl', function($rootScope, $scope, $location, SignupFa
 				$('#second_section').fadeIn(500)
 			})
 		})
+		$('#terms_switcher').click(function() {
+			$('#first_section').fadeOut(500, function() {
+				$('#third_section').fadeIn(500)
+			})
+		})
 	})
 
 	$scope.users = {};
@@ -14,10 +19,16 @@ helper.controller('SignupCtrl', function($rootScope, $scope, $location, SignupFa
 
 	$scope.signup = function(){
 		SignupFactory.signup({email: $scope.email, position: $scope.current_position, reason:$scope.reason}, function(output){
+			console.log($scope);
 			console.log("back in controller");
 			// $scope.users = output;
 			// $rootScope.users = output;
 		});
+	}
+
+	$scope.update = function(){
+		console.log($scope);
+
 	}
 
 	$scope.login = function() {
