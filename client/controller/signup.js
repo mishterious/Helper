@@ -11,13 +11,17 @@ helper.controller('SignupCtrl', function($rootScope, $scope, $location, SignupFa
 				$('#third_section').fadeIn(500)
 			})
 		})
+
+		$('#back').click(function() {
+			$('#third_section').fadeOut(500, function() {
+				$('#first_section').fadeIn(500)
+			})
+		})
 	})
 
 	$scope.users = {};
 	$scope.person = localStorageService.get('name');
 	console.log("in the controller");
-
-	console.log(localStorage.email);
 
 	$scope.signup = function(isValid){
 		SignupFactory.signup({email: $scope.email, position: $scope.current_position, reason:$scope.reason}, function(output){
@@ -39,6 +43,12 @@ helper.controller('SignupCtrl', function($rootScope, $scope, $location, SignupFa
 			console.log('Info does not match');
 		}
 		// console.log($scope);
+	}
+
+	$scope.apply = function() {
+		SignupFactory.apply($scope.applicant, function(output) {
+			console.log('Applicant data saved');
+		});
 	}
 
 	$scope.login = function() {

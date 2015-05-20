@@ -1,6 +1,6 @@
 //Setting up the angular app (module)
 // var myApp = angular.module('myApp',[]);
-var helper = angular.module('helper',['ngRoute', 'LocalStorageModule']);
+var helper = angular.module('helper',['ngRoute', 'LocalStorageModule', 'duScroll']);
 
 //partial code goes in here:
 // config method to setup routing

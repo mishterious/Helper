@@ -29,6 +29,14 @@ helper.factory('SignupFactory', function($http) {
 		});
 	}
 
+	factory.apply = function(data, callback) {
+		$http.post('/applicant/apply', data).success(function(output) {
+			callback(output);
+		}).error(function(data, status, headers, config) {
+			$('#unique-applicant').removeClass('hide');
+		});
+	}
+
 	factory.get_all_users = function(callback) {
 		// send a get request to the url '/friends_json'
 		console.log('all users here');

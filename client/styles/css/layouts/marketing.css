@@ -790,3 +790,19 @@ a.pure-button-primary {
     color: green;
     font-weight: bold;
 }
+
+.black {
+    color: black;
+}
+
+#third_section {
+    text-align: left;
+}
+
+.left-align {
+    text-align: left;
+}
+
+button#signup_button:hover {
+    background-color: orange;
+}
