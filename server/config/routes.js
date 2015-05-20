@@ -11,5 +11,9 @@ module.exports = function(app){
 			users.signUp(req,res);
 	});
 
+	app.post('/user/update', function(req,res){
+			users.update(req,res);
+	});
+
 	
 }

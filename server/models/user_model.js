@@ -10,7 +10,7 @@ var UserSchema = new mongoose.Schema({
   age: Number,
   gender: String,
   location: String, 
-  difficulty: String,
+  challenge: String,
   created_at: Date
 });
 

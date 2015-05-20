@@ -8,16 +8,23 @@ module.exports = (function(){
 				signUp: function(req, res) {
 
 					console.log(req.body);
-					var user = new User({email:req.body.email, position:req.body.position, reason:req.body.reason});
-					user.save(function(err, data){
-						
-						if (err){
-							console.log("Did not save");
+					User.findOne({ email: req.body.email }, function(err, user) {
+						if (user === null) {
+							user = new User({email:req.body.email, position:req.body.position, reason:req.body.reason});
+							user.created_at = new Date();
+							user.save(function(err, data){
+								if (err){
+									console.log("Did not save");
+									res.status(400).send('Could not save user!');
+								} else {
+									console.log(data);
+									res.json(data);
+								}
+							});
 						} else {
-							console.log(data);
-							res.json(data);
+							res.status(400).send('User already exists!');
 						}
-					})
+					});
 					// user.find({}, function(err, data) {
 					// 	console.log("came back from the model");
 					// 	if(err) {
@@ -27,6 +34,24 @@ module.exports = (function(){
 					// 		res.json(data);
 					// 	}
 					// })
+				},
+
+				update: function(req, res) {
+					User.findOne({ email: req.body.confirm_email }, function(err, user) {
+						if (user) {
+							user.first_name = req.body.first_name;
+							user.last_name = req.body.last_name;
+							user.age = req.body.age;
+							user.gender = req.body.gender;
+							user.location = req.body.location;
+							user.challenge = req.body.challenge;
+							user.save(function(err) {
+								res.json(user);
+							})
+						} else {
+							res.status(400).send('Error saving data to the database');
+						}
+					});
 				}
 
 				

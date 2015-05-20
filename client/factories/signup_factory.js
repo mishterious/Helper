@@ -9,11 +9,24 @@ helper.factory('SignupFactory', function($http) {
 		console.log('in the factory');
 		// send a get request to the url '/friends_json'
 		$http.post('/user/signup', data).success(function(output) {	
-			user = "returned to factory";
+		// user = "returned to factory";
 		// 	console.log(user);
 		// 	// we run a callback so that the controller can do things synchronously
-			callback(user);
-		})
+			callback(output);
+			$('#first_section').fadeOut(500, function() {
+				$('#second_section').fadeIn(500)
+			});
+		}).error(function(data, status, headers, config) {
+			$('#unique-email').removeClass('hide');
+		});
+	}
+
+	factory.update = function(data, callback) {
+		$http.post('/user/update', data).success(function(output) {
+			callback(output);
+		}).error(function(data, status, headers, config) {
+			console.log(data);
+		});
 	}
 
 	factory.get_all_users = function(callback) {

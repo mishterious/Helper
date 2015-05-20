@@ -141,34 +141,42 @@
                   <div id='first_section'>
                     <h4><strong>Be part of it</strong></h4>
                     <div class="modal-intro"> Thanks for your interest! We are bringing you something <strong>revolutionary</strong>. </br></br> Be among the first to sign up and get exclusive access to our launch. </div>
-                      <div class="form-group pure-form" >
-                        <label>Email address</label>
-                        <input type="email" ng-model="email" class="form-control" placeholder="Enter email" require>
-                      </div>
-                      <div class="form-group pure-form">
-                        <label>What is your current position?</label>
-                        <input type="text" class="form-control pure-form" ng-model="current_position" placeholder="Current Position" required>
-                      </div>
-                      <div class="form-group pure-form">
-                        <label>What are you looking for?</label>
-                        
-                          <!-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                            Select One of the Following Options.
-                            <span class="caret"></span>
-                          </button> -->
-                          <select  ng-model="reason" id='purpose'>
-                            <option role="presentation">I want to earn more.</option>
-                            <option role="presentation">My promotion is way overdue.</option>
-                            <option role="presentation">I really want to change careers.</option>
-                            <option role="presentation">I just need a job!</option>
-                          </select>
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input required type="checkbox">By signing up, you agree to our <span id ="terms_switcher">terms and conditions</span>
-                        </label>
-                      </div>
-                      <button type="submit" id='switcher' class="btn btn-default" ng-click="signup()">Submit</button>
+
+                      <form name='userForm' ng-submit='signup(userForm.$valid)' novalidate>
+                        <div class="form-group pure-form" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                          <label class='left-align'>Email address</label>
+                          <input type="email" name='email' ng-model="email" class="form-control" placeholder="Enter email" required>
+                          <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Valid email is required.</p>
+                          <p id='unique-email' class='hide error'>User already exists. Please user another email address.</p>
+                        </div>
+                        <div class="form-group pure-form" ng-class="{ 'has-error' : userForm.pos.$invalid && !userForm.pos.$pristine }">
+                          <label>What is your current position?</label>
+                          <input type="text" name='pos' class="form-control pure-form" ng-model="current_position" placeholder="Current position" required>
+                          <p ng-show="userForm.pos.$invalid && !userForm.pos.$pristine" class="help-block">Current position is required.</p>
+                        </div>
+                        <div class="form-group pure-form" ng-class="{ 'has-error' : userForm.reason.$invalid && userForm.reason.$touched }">
+                          <label>What are you looking for?</label>
+                          
+                            <!-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                              Select One of the Following Options.
+                              <span class="caret"></span>
+                            </button> -->
+                            <select  name='reason' ng-model="reason" id='purpose' required>
+                              <option style="display:none" value=''>Select a reason</option>
+                              <option role="presentation">I want to earn more.</option>
+                              <option role="presentation">My promotion is way overdue.</option>
+                              <option role="presentation">I really want to change careers.</option>
+                              <option role="presentation">I just need a job!</option>
+                            </select>
+                            <p ng-show="userForm.reason.$invalid && userForm.reason.$touched" class="help-block">Selection is required.</p>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" ng-model='checked' required>By signing up, you agree to our <span id ="terms_switcher">terms and conditions</span>
+                          </label>
+                        </div>
+                        <button type="submit" id='switcher' class="btn btn-default" ng-disabled='userForm.$invalid'>Submit</button>
+                      </form>
                     </div>
 
                     <!-- Second Form Modal  -->
@@ -176,53 +184,60 @@
                     <div id='second_section'>
                       <h4><strong>Thanks for signing up!</strong></h4>
                       <div class="modal-intro"> Before we let you go, could we ask you a few questions so we can get to know you better? </br> </div>
-                        <div class="row">
-                            <div class="form-group col-lg-6">
-                              <label>First Name</label>
-                              <input type="text" ng-model="first_name" class="form-control" required>
-                            </div>
-                            <div class="form-group col-lg-6">
-                              <label>Last Name</label>
-                              <input type="text" ng-model="last_name" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-lg-2">
-                              <label>Age</label>
-                              <input type="number" ng-model="age" class="form-control" required>
-                            </div>
-                            <div class="form-group col-lg-3">
-                              <label>Gender</label>
-                              <select id='purpose' ng-model="gender">
-                                 <option role="presentation"></option>
-                                 <option role="presentation">Male</option>
-                                 <option role="presentation">Female</option>
-                              </select> 
-                            </div>
-                            <div class="form-group col-lg-7">
-                              <label>Where do you live? </label>
-                              <input type="text" ng-model="location" class="form-control" placeholder ="Exe. San Francisco, CA" required>
-                            </div>
-<!--                             <div class="form-group col-lg-3">
-                              <label>Gender</label>
-                              <select id='purpose'>
-                                 <option role="presentation">Male</option>
-                                 <option role="presentation">Female</option>
-                              </select> 
-                            </div> -->
-                        </div>
-                        <div class="form-group pure-form">
-                          <label>What is <strong>hardest</strong> part about finding your next job?</label>
-                          <input type="text" class="form-control pure-form" ng-model="challenge" placeholder="Exe. I don't know where to look." required>
-                        </div>
-                        
-                        
-                        <button type="submit" class="btn btn-default" ng-click="update()">Submit</button>
-                        <div class="checkbox">
-<!--                           <label> -->
-                            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>  Helper.io will NOT share your information.
-                          <!-- </label> -->
-                        </div>
+                      <p class='success'>{{ message.success }}</p>
+                        <form name='secondForm' ng-submit='update(secondForm.$valid)' novalidate>
+                          <div class="row">
+                              <div class="form-group col-lg-6">
+                                <label>First Name</label>
+                                <input type="text" ng-model="info.first_name" class="form-control" required>
+                              </div>
+                              <div class="form-group col-lg-6">
+                                <label>Last Name</label>
+                                <input type="text" ng-model="info.last_name" class="form-control" required>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="form-group col-lg-2">
+                                <label>Age</label>
+                                <input type="number" ng-model="info.age" class="form-control" required>
+                              </div>
+                              <div class="form-group col-lg-3">
+                                <label>Gender</label>
+                                <select id='purpose' ng-model="info.gender">
+                                   <option style="display:none" value=''>Select a gender</option>
+                                   <option role="presentation">Male</option>
+                                   <option role="presentation">Female</option>
+                                </select> 
+                              </div>
+                              <div class="form-group col-lg-7">
+                                <label>Where do you live? </label>
+                                <input type="text" ng-model="info.location" class="form-control" placeholder ="Exe. San Francisco, CA" required>
+                              </div>
+  <!--                             <div class="form-group col-lg-3">
+                                <label>Gender</label>
+                                <select id='purpose'>
+                                   <option role="presentation">Male</option>
+                                   <option role="presentation">Female</option>
+                                </select> 
+                              </div> -->
+                          </div>
+                          <div class="form-group pure-form">
+                            <label>What is <strong>hardest</strong> part about finding your next job?</label>
+                            <input type="text" class="form-control pure-form" ng-model="info.challenge" placeholder="Exe. I don't know where to look." required>
+                          </div>
+                          <div class='form-group pure-form'>
+                            <label>Confirm email</label>
+                            <input type="email" name='info.confirm_email' ng-model="info.confirm_email" class="form-control" placeholder="Confirm email" required>
+                            <p class='error'>{{ message.error }}</p>
+                          </div>
+
+                          <button type="submit" class="btn btn-default" ng-disabled='secondForm.$invalid'>Submit</button>
+                          <div class="checkbox">
+  <!--                           <label> -->
+                              <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>  Helper.io will NOT share your information.
+                            <!-- </label> -->
+                          </div>
+                        </form>
                     </div>
 
                     <!-- Third section Terms and Conditions -->

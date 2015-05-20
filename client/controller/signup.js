@@ -1,11 +1,11 @@
 
 helper.controller('SignupCtrl', function($rootScope, $scope, $location, SignupFactory,localStorageService) {
 	$(document).ready(function(){
-		$('#switcher').click(function() {
-			$('#first_section').fadeOut(500, function() {
-				$('#second_section').fadeIn(500)
-			})
-		})
+		// $('#switcher').click(function() {
+		// 	$('#first_section').fadeOut(500, function() {
+		// 		$('#second_section').fadeIn(500)
+		// 	})
+		// })
 		$('#terms_switcher').click(function() {
 			$('#first_section').fadeOut(500, function() {
 				$('#third_section').fadeIn(500)
@@ -17,18 +17,28 @@ helper.controller('SignupCtrl', function($rootScope, $scope, $location, SignupFa
 	$scope.person = localStorageService.get('name');
 	console.log("in the controller");
 
-	$scope.signup = function(){
+	console.log(localStorage.email);
+
+	$scope.signup = function(isValid){
 		SignupFactory.signup({email: $scope.email, position: $scope.current_position, reason:$scope.reason}, function(output){
 			console.log($scope);
 			console.log("back in controller");
+			localStorage.email = output.email;
 			// $scope.users = output;
 			// $rootScope.users = output;
 		});
 	}
 
-	$scope.update = function(){
-		console.log($scope);
-
+	$scope.update = function(isValid){
+		if ($scope.info.confirm_email === localStorage.email) {
+			SignupFactory.update($scope.info, function(output) {
+				$scope.message = { success: 'Your information has been submitted.' };
+			});
+		} else {
+			$scope.message = { error: 'Email does not match. Please try again.' };
+			console.log('Info does not match');
+		}
+		// console.log($scope);
 	}
 
 	$scope.login = function() {
