@@ -1,11 +1,7 @@
 
 helper.controller('SignupCtrl', function($rootScope, $scope, $location, SignupFactory,localStorageService) {
 	$(document).ready(function(){
-		// $('#switcher').click(function() {
-		// 	$('#first_section').fadeOut(500, function() {
-		// 		$('#second_section').fadeIn(500)
-		// 	})
-		// })
+		
 		$('#terms_switcher').click(function() {
 			$('#first_section').fadeOut(500, function() {
 				$('#third_section').fadeIn(500)
@@ -14,6 +10,12 @@ helper.controller('SignupCtrl', function($rootScope, $scope, $location, SignupFa
 
 		$('#back').click(function() {
 			$('#third_section').fadeOut(500, function() {
+				$('#first_section').fadeIn(500)
+			})
+		})
+
+		$('#science_switcher').click(function() {
+			$('#science_signup').fadeOut(500, function() {
 				$('#first_section').fadeIn(500)
 			})
 		})

@@ -318,6 +318,10 @@ a.pure-button-primary {
     display: none;
  }
 
+    .science_info{
+        color:#E94A43;
+    }
+
  #third_section {
      display: none;
   }
@@ -495,6 +499,9 @@ a.pure-button-primary {
        {
          text-align:center;
          color:#333;
+         height:450px;
+         overflow-y:auto;
+
        }
        
           .modal-intro
@@ -644,11 +651,11 @@ a.pure-button-primary {
 
 
         .splash {
-            width: 100%;
+            width: 95%;
         }
 
             .splash-head {
-                font-size: 150%;
+                font-size: 100%;
                 padding-top:0px;
                 font-weight:100;
             }
@@ -656,14 +663,13 @@ a.pure-button-primary {
 
             .splash-subhead {
                 font-weight: 500;
-                font-size:60%;
-
+                font-size:80%;
             }
     #down_icon{
         color:white;
         height:50px;
         font-size: 64px;
-        padding-top: 40%;
+        padding-top: 22%;
         margin: 0px;
         -webkit-animation: 3.4s ease-in-out infinite fadebottom;
     }
@@ -745,9 +751,9 @@ a.pure-button-primary {
  */
 @media (max-width: 780px) {
     /* We increase the header font size even more */
-    .splash-head {
+/*    .splash-head {
         font-size: 300%;
-    }
+    }*/
 
     #boxes{
         display:block;
@@ -764,9 +770,7 @@ a.pure-button-primary {
    
 }
 
-#science_content{
-    
-}
+
 
 #science_heading{
 
@@ -804,5 +808,5 @@ a.pure-button-primary {
 }
 
 button#signup_button:hover {
-    background-color: orange;
+    background-color: rgba(270,127,69,.97);
 }
